@@ -1,5 +1,4 @@
 // Initialize ALL global variables here
-//alle functies in arrow functions noteren
 
 // This code here selects a random word
 const wordList = [
@@ -11,21 +10,16 @@ const wordList = [
 	'snoer',
 	'geeuw'
 ];
-setWordToBeGuessed = value => {
-	//wordList?
-	let index = Math.floor(Math.random() * value.length); //wordList?
-	const x = value;
-	return x[index];
+
+//let word;
+wordpicker = word => {
+	//let word = 'sinaasappel';
+	let index = Math.floor(Math.random() * word.length);
+	//console.log('wat ben ik?', word);
+	return word[index];
 };
 
-splitLetterWordToBeGuessed = letters => {
-	let loseLetters = setWordToBeGuessed(wordList).split('');
-	document.querySelector('.lose p span').innerHTML = `"${loseLetters.join(
-		''
-	)}"`;
-};
-
-let inputs; //nieuwe naam  //letterGuessedByUser
+//let inputs;
 wordGuessed = (word, inputs) => {
 	// remove all letters from word that are already guessed
 	// We can do this with a for loop to.
@@ -100,15 +94,15 @@ guessLetter = () => {
 	}
 };
 
-//schone functie schrijven. alleen aanroepen niet uitschrijven in functie.
-startGame = () => {
+beginTheGameWithPlayer = player1 => {
 	gameOver = false;
 	document.querySelector('.win').style.display = 'none';
 	document.querySelector('.lose').style.display = 'none';
 	document.querySelector('input').value = '';
-	splitLetterWordToBeGuessed();
-	console.log(setWordToBeGuessed(wordList));
-	//ontvang 1 woord van de woordlist -random
+
+	word = wordpicker(wordList).split('');
+	document.querySelector('.lose p span').innerHTML = `"${word.join('')}"`;
+	word;
 
 	tries = 0;
 	document.querySelector('.lives span').innerHTML = 5 - 0;
@@ -120,7 +114,8 @@ startGame = () => {
 
 document.addEventListener('DOMContentLoaded', function() {
 	document.querySelector('.guess').addEventListener('click', guessLetter);
-	document.querySelector('.restart').addEventListener('click', startGame);
-	startGame();
-	//console.log toevoegen
+	document
+		.querySelector('.restart')
+		.addEventListener('click', beginTheGameWithPlayer);
+	beginTheGameWithPlayer();
 });
