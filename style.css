@@ -2,10 +2,22 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	font-family: 'Luckiest Guy', cursive;
 }
-
-
-
+h1{
+	font-size: 3em;
+	margin-top: 2em;
+}
+.inputGame, .showWordResult{
+	margin: 2em 0;
+}
+.wrongGuesses h3{
+	text-align: center;
+}
+.results{
+	margin: 2em;
+	text-align:center;
+}
 .win,
 .lose {
   display: none;
@@ -16,10 +28,12 @@
 }
 
 .lose h2 {
-  color: blue;
-  opacity: 0;
+  color: white;
+  font-size: 2em;
   animation-name: loser;
   animation-duration: 4s;
+  animation-iteration-count: infinite;
+
 }
 
 
@@ -27,9 +41,9 @@
 
 @keyframes loser {
   0%   {background-color: red; opacity: 1;}
-  25%  {background-color: yellow; opacity: 0;}
+  25%  {background-color: yellow; opacity: 1;}
   50%  {background-color: blue; opacity: 1;}
-  100% {background-color: green; opacity: 0;}
+  100% {background-color: green; opacity: 1;}
 }
 .guess:hover{
 	background-color: lightblue;
@@ -42,9 +56,12 @@
 .lives span{
 	background-color: black;
 	color: white;
-	padding: 0.5em 0.8em;
-	margin: 1em;
+	padding: 0.5em 0.9em;
+	
 	font-size: 2em;
 	font-weight: bold;
 	border-radius: 50%;
+}
+.lives{
+	margin-top: 2em;
 }
