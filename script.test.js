@@ -1,21 +1,35 @@
-const showWord = require("./script.js");
+const { lostGame, wordPicker, letterChecker } = require("./script.js");
 
-//starten van de game d.m.v. het kiezen van het woord //string = true //woord uit de functie is een woord uit de array
-// test('woord komt voor in lijst', function() {
+// test 1
+const wordList = [
+  "vis",
+  "toeter",
+  "developer",
+  "telefoon",
+  "moeder",
+  "snoer",
+  "geeuw"
+];
 
-// 	const output = wordPicker(wordList.includes());
-
-// 	expect(output).toBe(password);
-
-//checken of een letter voorkomt in het woord // true/ false met input letter en woord.
-
-test("komt letter voor in het woord", function() {
-  const output = showWord("a");
-
-  expect(output).toBe("a");
+test("is een string", function() {
+  const output = wordPicker(wordList);
+  console.log(output);
+  expect(output).toBeTruthy();
 });
 
-/* updaten van het aantal pogingen van de gebruiker  // variabele met aantal pogingen, uitkomst return lager dan huidig variabel, 5 - input
-//update van de lijst met letters die al geraden zijn door de gebruiker //nieuwe letter invoeren // lijst geraden moet hoger zijn dan huidige lijst
-//verliezen van de game wanneer er geen pogingen meer over zijn
-//winnen van de game */
+// test 2
+const letter = "a";
+const woord = "appel";
+
+test("heeft het woord letter ..", function() {
+  const output = letterChecker(letter, woord);
+  console.log(output);
+  expect(output).toBe(true);
+});
+
+// test 3
+test("Geen pogingen meer over", function() {
+  const output = lostGame();
+  console.log(output);
+  expect(output).toBe(true);
+});

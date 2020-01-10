@@ -13,12 +13,15 @@ const wordList = [
 
 //let word;
 wordPicker = word => {
-  //let word = 'sinaasappel';
   let index = Math.floor(Math.random() * word.length);
-  //console.log('wat ben ik?', word);
+
   return word[index];
 };
-console.log(wordPicker(wordList));
+// console.log(wordPicker(wordList));
+
+letterChecker = (letter, woord) => {
+  return woord.includes(letter);
+};
 
 //let inputs;
 wordGuessed = (word, inputs) => {
@@ -36,10 +39,10 @@ clean = () => (document.querySelector("input").value = "");
 
 let gameOver;
 winTheGame = () => (document.querySelector(".win").style.display = "block");
-//gameOver = true;
+gameOver = true;
 
-lose4 = () => (document.querySelector(".lose").style.display = "block");
-//gameOver = true;
+lostGame = () => (document.querySelector(".lose").style.display = "block");
+gameOver = true;
 
 spanTheWord1 = word =>
   (document.querySelector(".lose p span").innerHTML = `"${word.join("")}"`);
@@ -91,7 +94,7 @@ guessLetter = () => {
   if (wordGuessed(word, inputs)) {
     winTheGame();
   } else if (tries >= maxAmount) {
-    lose4();
+    lostGame();
   }
 };
 
@@ -121,4 +124,4 @@ document.addEventListener("DOMContentLoaded", function() {
   beginTheGameWithPlayer();
 });
 
-module.exports = showWord;
+module.exports = { lostGame, wordPicker, letterChecker };
