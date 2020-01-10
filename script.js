@@ -1,4 +1,6 @@
 // Initialize ALL global variables here
+//alle functies in arrow functions noteren
+
 
 // This code here selects a random word
 const wordList = [
@@ -10,18 +12,25 @@ const wordList = [
 	'snoer',
 	'geeuw'
 ];
-let maxAmount = 5;
+let maxAmount = 5; //verkeerde plek
 
-let word;
-const wordpicker = function(list) {
-	let word = 'sinaasappel';
-	let index = Math.floor(Math.random() * list.length);
-	const x = list;
-	console.log('wat ben ik?', word);
+
+
+const setWordToBeGuessed = function(value) {  //wordList?
+	let index = Math.floor(Math.random() * value.length);//wordList?
+	const x = value;
 	return x[index];
 };
 
-let inputs;
+const splitLetterWordToBeGuessed = (letters) => {
+	let loseLetters = setWordToBeGuessed(wordList).split('');
+	document.querySelector('.lose p span').innerHTML = `"${loseLetters.join('')}"`;
+	
+};
+
+
+
+let inputs; //nieuwe naam  //letterGuessedByUser
 const wordGuessed = function(word, inputs) {
 	// remove all letters from word that are already guessed
 	// We can do this with a for loop to.
@@ -33,31 +42,31 @@ const wordGuessed = function(word, inputs) {
 	return remaining.length === 0;
 };
 
-const clean = function() {
+const clean = function() { //emptyInputField
 	document.querySelector('input').value = '';
 };
 
-let gameOver;
+//let gameOver; //fame finished?
 const winTheGame = function() {
 	document.querySelector('.win').style.display = 'block';
-	gameOver = true;
+	gameOver = true; //
 };
 
-const lose4 = function() {
+const lose4 = function() {  //nieuwe functienaam verzinnen
 	document.querySelector('.lose').style.display = 'block';
 	gameOver = true;
 };
 
-const spanTheWord1 = function(word) {
+const spanTheWord1 = function(word) { //nieuwe nam verzinnen
 	document.querySelector('.lose p span').innerHTML = `"${word.join('')}"`;
 };
 
-let tries = 0;
-const updateTriesDisplay = function(tries) {
+let tries = 0; 
+const updateTriesDisplay = function(tries) {   //functienaam triesCounter
 	document.querySelector('.lives span').innerHTML = 5 - tries;
 };
 
-const lettersInTheRow = function(word, inputs) {
+const lettersInTheRow = function(word, inputs) { //welke row? welke letters? wrongGuessedLetters
 	let wrongLetters = inputs.filter(function(letter) {
 		// If the letter is in the word return.... false/true (we want to remove that then)
 		return !word.includes(letter);
@@ -76,11 +85,12 @@ const showWord = function(word, inputLetterWords) {
 	document.querySelector('.the_word').innerHTML = display.join(' ');
 };
 
-const guessLetter = function() {
+//naam functie checkLetter
+const guessLetter = function() { //arugements toevoegen guessedLetter en wordToBeGuessed
 	if (gameOver) {
 		return;
 	}
-	const input1 = document.querySelector('input').value;
+	const input1 = document.querySelector('input').value; // functie buiten functie schrijven. 
 	document.querySelector('input').value = '';
 
 	if (inputs.includes(input1) || input1 === '') {
@@ -103,15 +113,18 @@ const guessLetter = function() {
 	}
 };
 
-const beginTheGameWithPlayer = function(player1) {
+
+//schone functie schrijven. alleen aanroepen niet uitschrijven in functie.
+startGame = () => { 
 	gameOver = false;
 	document.querySelector('.win').style.display = 'none';
 	document.querySelector('.lose').style.display = 'none';
 	document.querySelector('input').value = '';
+	splitLetterWordToBeGuessed();
+	console.log(setWordToBeGuessed(wordList))
+	//ontvang 1 woord van de woordlist -random
 
-	word = wordpicker(wordList).split('');
-	document.querySelector('.lose p span').innerHTML = `"${word.join('')}"`;
-	word;
+
 
 	tries = 0;
 	document.querySelector('.lives span').innerHTML = 5 - 0;
@@ -125,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	document.querySelector('.guess').addEventListener('click', guessLetter);
 	document
 		.querySelector('.restart')
-		.addEventListener('click', beginTheGameWithPlayer);
-	beginTheGameWithPlayer();
+		.addEventListener('click', startGame);
+	startGame();
+	//console.log toevoegen
 });
