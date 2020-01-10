@@ -1,3 +1,11 @@
+.totalGame{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+
 .win,
 .lose {
   display: none;
@@ -9,4 +17,34 @@
 
 .lose h2 {
   color: blue;
+  opacity: 0;
+  animation-name: loser;
+  animation-duration: 4s;
+}
+
+
+
+
+@keyframes loser {
+  0%   {background-color: red; opacity: 1;}
+  25%  {background-color: yellow; opacity: 0;}
+  50%  {background-color: blue; opacity: 1;}
+  100% {background-color: green; opacity: 0;}
+}
+.guess:hover{
+	background-color: lightblue;
+}
+
+.restart:hover{
+	background-color: lightblue;
+}
+
+.lives span{
+	background-color: black;
+	color: white;
+	padding: 0.5em 0.8em;
+	margin: 1em;
+	font-size: 2em;
+	font-weight: bold;
+	border-radius: 50%;
 }
