@@ -121,4 +121,4 @@ document.addEventListener("DOMContentLoaded", function() {
   beginTheGameWithPlayer();
 });
 
-module.exports = wordPicker;
+module.exports = showWord;
