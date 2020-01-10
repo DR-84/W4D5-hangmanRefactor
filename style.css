@@ -6,16 +6,16 @@
 }
 h1{
 	font-size: 3em;
-	margin-top: 2em;
+	margin-top: 1em;
 }
 .inputGame, .showWordResult{
-	margin: 2em 0;
+	margin: 1em 0;
 }
 .wrongGuesses h3{
 	text-align: center;
 }
 .results{
-	margin: 2em;
+	margin: 1em;
 	text-align:center;
 }
 .win,
@@ -23,23 +23,18 @@ h1{
   display: none;
 }
 
-.win h2 {
-  color: red;
-}
-
-.lose h2 {
+.lose h2, .win h2 {
   color: white;
   font-size: 2em;
-  animation-name: loser;
+  animation-name: result;
   animation-duration: 4s;
   animation-iteration-count: infinite;
-
 }
 
 
 
 
-@keyframes loser {
+@keyframes result {
   0%   {background-color: red; opacity: 1;}
   25%  {background-color: yellow; opacity: 1;}
   50%  {background-color: blue; opacity: 1;}
@@ -64,4 +59,41 @@ h1{
 }
 .lives{
 	margin-top: 2em;
+}
+
+.showResultAnimation{
+	background-color: yellow;
+	display: grid;
+	grid-template-columns: 50px 50px 50px 50px 50px;
+  	grid-template-rows: 50px 75px 50px 100px 75px;
+}
+.firstGuess{
+	grid-area: 1/ 1/ 6/ 1;
+	border-left: 4px solid black;
+}
+
+.secondGuess{
+	grid-area: 1/ 1/ 1/ 4;
+	border-top: 4px solid black;
+}
+.thirdGuess{
+	grid-area: 1/ 4/ 1/ 1;
+	border-right: 4px solid black;
+}
+
+.fourthGuess{
+	grid-area: 2 / 3/ 3/ 5;
+	background-image: url("smiley-sad.png");
+	background-repeat: no-repeat;
+	background-position: 10px 0;
+	background-size: 75px;
+}
+.fifthGuess{
+	grid-area: 4 / 3/ 5/ 5;
+	border: 4px solid black;
+	border-radius: 50%;
+}
+.fifthGuessExtra{
+	grid-area: 3/ 3/ 3/ 4;
+	border-right: 4px solid black;
 }
